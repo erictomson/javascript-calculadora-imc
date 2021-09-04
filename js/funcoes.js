@@ -48,3 +48,14 @@ function lePaciente() {
 
     return paciente;
 }
+
+function geraRelatorio (pacientes) {
+    var listaNumerada = document.getElementById("listaNumerada");
+    listaNumerada.innerHTML = ""; //limpa a lista
+
+    pacientes.forEach((paciente) => {
+       var imc = calculaIMC(paciente.peso, paciente.altura);
+       var situacao = verificaIMC(imc);
+       listaNumerada.innerHTML += `<li>${paciente.nome} - Situação: ${situacao}</li>`;
+    });       
+}
