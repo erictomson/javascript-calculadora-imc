@@ -4,6 +4,7 @@ function calculaIMC(peso, altura) {
 }
 
 function verificaIMC(imc) {
+    var situacao;
     if (imc < 18.5) {
         situacao = "Magreza";
     } else if (imc >= 18.5 && imc <= 24.9) {
@@ -16,20 +17,34 @@ function verificaIMC(imc) {
     return situacao;
 }
 
-function mostraPaciente (nomePaciente, pesoPaciente, alturaPaciente) {
+function mostraPaciente(paciente) {
     //Chamando as funções para os cálculos
-    var imc = calculaIMC(pesoPaciente, alturaPaciente);
+    var imc = calculaIMC(paciente.peso, paciente.altura);
     var situacao = verificaIMC(imc);
     //altera o DOM
     var elNome = document.getElementById("nome");
-    elNome.innerHTML = nomePaciente;
+    elNome.innerHTML = paciente.nome;
     var elPeso = document.getElementById("peso");
-    elPeso.innerHTML = pesoPaciente;
+    elPeso.innerHTML = paciente.peso;
     var elAltura = document.getElementById("altura");
-    elAltura.innerHTML = alturaPaciente;
+    elAltura.innerHTML = paciente.altura;
     //calculo
     var elImc = document.getElementById("imc");
     elImc.innerHTML = imc.toFixed(2);
     var elSituacao = document.getElementById("situacao");
     elSituacao.innerHTML = situacao;
+}
+
+function lePaciente() {
+    var inputNome = document.getElementById("txtNome");
+    var inputPeso = document.getElementById("numPeso");
+    var inputAltura = document.getElementById("numAltura");
+
+    var paciente = {
+        nome: inputNome.value,
+        peso: inputPeso.value,
+        altura: inputAltura.value
+    };
+
+    return paciente;
 }

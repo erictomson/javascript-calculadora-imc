@@ -3,11 +3,11 @@
  - Programador: Eric Tomson
 */
 
-var nome = "Renato Oliveira";
-var peso = 76.00;
-var altura = 1.78;
-
-mostraPaciente(nome, peso, altura);
+var botao = document.getElementById("calcular");
+botao.addEventListener("click", function() {
+                                    var paciente = lePaciente();
+                                    mostraPaciente(paciente);
+                                });
 
 // console.log(nome);
 // console.log(`Peso: ${peso} - Altura: ${altura}`); //string template
